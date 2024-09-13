@@ -23,7 +23,6 @@ contract NFTGatedEvent is Ownable {
     }
 
     mapping(uint256 => Event) public events;
-    mapping(address => mapping(uint256 => bool)) hasRegistered;
    
     event EventCreated(uint256 indexed eventId, string indexed title, string indexed location, uint256 closeDate);
     event UserRegistered(uint256 indexed eventId, address indexed user);
@@ -44,6 +43,8 @@ contract NFTGatedEvent is Ownable {
         et.location = _location;
         et.closeDate = _closeDate * (block.timestamp + 60);
         eventCount += 1;
+
+        emit EventCreated(_eventId, _title, _location, _closeDate);
     }
 
     function registerForEvent(uint256 _eventId) external {
