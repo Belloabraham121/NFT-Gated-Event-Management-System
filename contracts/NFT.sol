@@ -11,7 +11,6 @@ contract MyNFT is ERC721URIStorage, Ownable {
 
     function mintNFT(address recipient, string memory tokenURI)
         public
-        onlyOwner
         returns (uint256)
     {
         _tokenIds++;

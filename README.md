@@ -14,8 +14,52 @@ NFTGatedEvent is a Solidity smart contract that enables the creation and managem
 
 ## Prerequisites
 
-- Solidity ^0.8.24
-- OpenZeppelin Contracts library
+- Node.js (v12.0.0 or later)
+- npm (usually comes with Node.js)
+- Hardhat
+
+## Setup and Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/Belloabraham121/NFT-Gated-Event-Management-System.git
+   cd NFT-Gated-Event-Management-System
+   ```
+
+2. Install dependencies:
+   ```
+   npm install
+   ```
+
+3. Install Hardhat (if not already installed):
+   ```
+   npm install --save-dev hardhat
+   ```
+
+4. Install OpenZeppelin Contracts:
+   ```
+   npm install @openzeppelin/contracts
+   ```
+
+5. Configure Hardhat:
+   Create a `hardhat.config.js` file in the root directory if it doesn't exist already. Here's a basic configuration:
+
+   ```javascript
+   require("@nomicfoundation/hardhat-toolbox");
+
+   module.exports = {
+     solidity: "0.8.24",
+     networks: {
+       hardhat: {},
+       // Add other network configurations as needed
+     },
+   };
+   ```
+
+6. Compile the contract:
+   ```
+   npx hardhat compile
+   ```
 
 ## Contract Details
 
@@ -48,11 +92,22 @@ NFTGatedEvent is a Solidity smart contract that enables the creation and managem
 
 ## Usage
 
-1. Deploy the contract, providing the address of the NFT contract that will be used for gating.
+1. Deploy the contract, providing the address of the NFT contract that will be used for gating:
+   ```
+   npx hardhat run scripts/deploy.js --network <your-network>
+   ```
+
 2. The contract owner can create events using `createEvent`.
 3. Users who own an NFT from the specified collection can register for events using `registerForEvent`.
 4. Users can cancel their registration using `cancelRegistration`.
 5. Anyone can check registration status and event details using `isRegistered` and `getEventDetails`.
+
+## Testing
+
+Run the test suite:
+```
+npx hardhat test
+```
 
 ## Security Considerations
 
