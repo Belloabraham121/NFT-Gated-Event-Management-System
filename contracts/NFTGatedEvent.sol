@@ -29,7 +29,7 @@ contract NFTGatedEvent is Ownable {
     event UserRegistrationCancelled(uint256 indexed eventId, address indexed user);
 
     
-    function createEvent(string memory _title, string memory _location, uint256 _closeDate) external onlyOwner{ 
+    function createEvent(string memory _title, string memory _location, uint256 _closeDate) external onlyOwner { 
         require(msg.sender != address(0), "address zero found");
         require(bytes(_title).length > 0, "Title cannot be empty");
         require(bytes(_location).length > 0, "Location cannot be empty");
@@ -80,5 +80,9 @@ contract NFTGatedEvent is Ownable {
 
     emit UserRegistrationCancelled(_eventId, msg.sender);
     return true;
+    }
+
+    function testZeroAddressCheck() public view {
+        require(msg.sender != address(0), "address zero found");
     }
 }
