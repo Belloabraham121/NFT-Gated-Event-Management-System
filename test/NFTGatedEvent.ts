@@ -133,29 +133,29 @@ describe ("NFTGatedEvent", function(){
         .to.be.revertedWith("Invalid event ID");
     });
 
-    // it("Should revert when registering after the close date", async function() {
-    //   const { nftGatedEvent, nft, owner, signer1 } = await loadFixture(deployNFTGatedEventFixture);
+    it("Should revert when registering after the close date", async function() {
+      const { nftGatedEvent, nft, owner, signer1 } = await loadFixture(deployNFTGatedEventFixture);
       
-    //   // Get the current block timestamp
-    //   const currentTimestamp = await time.latest();
+      // Get the current block timestamp
+      const currentTimestamp = await time.latest();
       
-    //   // Set close date to 1 hour from now
-    //   const closeDate = currentTimestamp + 3600;
+      // Set close date to 1 hour from now
+      const closeDate = currentTimestamp + 3600;
       
-    //   // Create an event
-    //   await nftGatedEvent.connect(owner).createEvent("Test Event", "Test Location", closeDate);
+      // Create an event
+      await nftGatedEvent.connect(owner).createEvent("Test Event", "Test Location", closeDate);
       
-    //   // Mint an NFT for signer1
-    //   await nft.connect(signer1).mintNFT(signer1.address, "https://example.com/token/1");
+      // Mint an NFT for signer1
+      await nft.connect(signer1).mintNFT(signer1.address, "https://example.com/token/1");
       
-    //   // Set the next block timestamp to 1 second after the close date
-    //   await time.setNextBlockTimestamp(closeDate + 1);
+      // Set the next block timestamp to 1 second after the close date
+      await time.setNextBlockTimestamp(closeDate + 1);
       
-    //   // Try to register
-    //   await expect(nftGatedEvent.connect(signer1).registerForEvent(1))
-    //     .to.be.revertedWith("Event registration closed");
+      // Try to register
+      await expect(nftGatedEvent.connect(signer1).registerForEvent(1))
+        .to.be.revertedWith("Event registration closed");
 
-    // })
+    })
 
     it("Should revert when trying to register twice", async function() {
       const { nftGatedEvent, nft, owner, signer1 } = await loadFixture(deployNFTGatedEventFixture);
