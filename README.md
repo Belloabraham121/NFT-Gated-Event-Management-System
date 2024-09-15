@@ -41,22 +41,7 @@ NFTGatedEvent is a Solidity smart contract that enables the creation and managem
    npm install @openzeppelin/contracts
    ```
 
-5. Configure Hardhat:
-   Create a `hardhat.config.js` file in the root directory if it doesn't exist already. Here's a basic configuration:
-
-   ```javascript
-   require("@nomicfoundation/hardhat-toolbox");
-
-   module.exports = {
-     solidity: "0.8.24",
-     networks: {
-       hardhat: {},
-       // Add other network configurations as needed
-     },
-   };
-   ```
-
-6. Compile the contract:
+5. Compile the contract:
    ```
    npx hardhat compile
    ```
