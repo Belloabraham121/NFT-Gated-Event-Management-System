@@ -41,7 +41,7 @@ contract NFTGatedEvent is Ownable {
         et.eventId = _eventId;
         et.title = _title;
         et.location = _location;
-        et.closeDate = _closeDate * (block.timestamp + 60);
+        et.closeDate = _closeDate;
         eventCount += 1;
 
         emit EventCreated(_eventId, _title, _location, _closeDate);

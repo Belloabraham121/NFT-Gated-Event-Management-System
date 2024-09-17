@@ -139,8 +139,8 @@ describe ("NFTGatedEvent", function(){
       // Get the current block timestamp
       const currentTimestamp = await time.latest();
       
-      // Set close date to 1 hour from now
-      const closeDate = currentTimestamp + 3600;
+      // Set close date to 30 seconds from now
+      const closeDate = currentTimestamp + 60;
       
       // Create an event
       await nftGatedEvent.connect(owner).createEvent("Test Event", "Test Location", closeDate);
@@ -149,7 +149,7 @@ describe ("NFTGatedEvent", function(){
       await nft.connect(signer1).mintNFT(signer1.address, "https://example.com/token/1");
       
       // Set the next block timestamp to 1 second after the close date
-      await time.setNextBlockTimestamp(closeDate + 1);
+      await time.setNextBlockTimestamp(closeDate + 50);
       
       // Try to register
       await expect(nftGatedEvent.connect(signer1).registerForEvent(1))
